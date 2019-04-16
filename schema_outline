@@ -23,7 +23,6 @@ TRACKS
 id: integer not_null
 title: string not_null
 album_id: integer 
-artist_id: integer not_null
 created at: datetime not_null
 updated at: datetime not_null
 
