@@ -1,0 +1,29 @@
+USERS
+
+id: integer not null, 
+username: string not null, indexed
+email: string, not null
+password_digest: string, not null
+session_token: string, not null
+created at:
+updated at:
+
+index on: username
+
+ALBUMS
+
+id: integer not null,
+title: string not_null
+artist_id: integer not_null
+created at: datetime not_null
+updated at: datetime not_null
+
+TRACKS
+
+id: integer not_null
+title: string not_null
+album_id: integer 
+artist_id: integer not_null
+created at: datetime not_null
+updated at: datetime not_null
+
