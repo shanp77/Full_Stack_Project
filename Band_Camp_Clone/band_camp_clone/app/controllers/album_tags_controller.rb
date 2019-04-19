@@ -1,0 +1,2 @@
+class AlbumTagsController < ApplicationController
+end

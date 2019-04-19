@@ -4,7 +4,7 @@ module.exports = {
   entry: './frontend/entry.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'bundle.js'
+    filename: './bundle.js'
   },
   module: {
     rules: [
@@ -13,7 +13,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['env', 'react']
+          presets: ['@babel/env', '@babel/react']
         }
       }
     ]
