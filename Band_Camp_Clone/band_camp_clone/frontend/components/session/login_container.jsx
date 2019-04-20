@@ -3,14 +3,15 @@ import LoginForm from './login_form.jsx';
 import { logInUser } from './../../actions/session';
 
 const mapStateToProps = state => {
-
+ 
   let localState = {
     username: "",
     password: ""
   };
   return ({
     state: localState,
-    formType: "login"
+    formType: "login",
+    errors: state.errors.sessionErrors
   });
 };
 

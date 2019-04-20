@@ -11,7 +11,8 @@ const mapStateToProps = state => {
   };
   return ({
     state: localState,
-    formType: "signup"
+    formType: "signup",
+    errors: state.errors.sessionErrors
   });
 };
 

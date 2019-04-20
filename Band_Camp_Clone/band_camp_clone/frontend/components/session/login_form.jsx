@@ -18,26 +18,59 @@ class LoginForm extends React.Component {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
+  // renderErrors() {
+  //   return (
+  //     <ul>
+  //       {this.props.errors.map( errs => {
+  //         return (<li></li>)
+  //       })}
+  //     </ul>
+  //   )
+  // }
   render() {
-
-
+   
+    let errorStatus;
+      if (this.props.errors.length > 0) {
+        errorStatus = "input-errors";
+      } else {
+        errorStatus = "input-no-errors";
+      }
+     
     return (
-      <div>
+      <div className="form-signup">
+        <span className="session-header">Log in</span>
+        <div className="divide-line" ></div>
         <form onSubmit={this.handleSubmit}>
-          <ul>
-            <li>
-              <label >Username
-            <input type="text" onChange={this.update("username")} value={this.state.username} />
-              </label>
-            </li>
-            <li>
-              <label >Password
-            <input type="password" onChange={this.update("password")} value={this.state.password} />
-              </label>
-            </li>
-            <li>
-              <input type="submit" value="Sign Up" />
-            </li>
+          <ul className="session-elements-list">
+          <table className="w3-table">
+          <tbody>
+            <tr>
+              <td className="col-left">
+                <label >Username </label>
+              </td>
+              <td>
+                <input className={errorStatus} type="text" onChange={this.update("username")} value={this.state.username} />
+              </td>
+            </tr>
+            <tr>
+              <td className="col-left">
+                <label >Password </label>  
+              </td>
+              <td>
+                <input className={errorStatus} type="password" onChange={this.update("password")} value={this.state.password} />
+                <div className="errors">
+                  {this.props.errors}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input className="login-signup-button" type="submit" value="Log in" />
+              </td>
+            </tr>
+              </tbody>
+          </table>
           </ul>
         </form>
       </div>

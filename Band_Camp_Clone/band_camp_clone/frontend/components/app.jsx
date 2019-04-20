@@ -8,15 +8,16 @@ import WelcomePageContainer from './welcome/welcome_page_container';
 const App =  () => {
  
  return(
-<div>
-  <h1>Band Land!</h1>
+<div className="outer-body">
   <header>
       <WelcomePageContainer />
   </header>
-  <Switch>
-      <AuthRoute exact path='/signup' component={SignupContainer} />
-      <AuthRoute exact path='/login' component={LoginContainer} />
-  </Switch>
+  <main>
+    <Switch>
+        <AuthRoute exact path='/signup' component={SignupContainer} />
+        <AuthRoute exact path='/login' component={LoginContainer} />
+    </Switch>
+  </main>
 </div>
  
 )};

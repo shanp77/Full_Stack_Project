@@ -19,29 +19,39 @@ class SignupForm extends React.Component {
   }
 
   render() {
-
+    let errorStatus;
+    if (this.props.errors.length > 0) {
+      errorStatus = "input-errors";
+    } else {
+      errorStatus = "input-no-errors";
+    }
 
     return (
-      <div>
+      <div className="form-signup">
+        <span><h2>Login</h2></span>
+        <div className="divide-line" ></div>
         <form onSubmit={this.handleSubmit}>
-        <ul>
+        <ul className="session-elements-list">
           <li>
-            <label >E-mail
-            <input type="email" onChange={this.update("email")} value={this.state.mail} />
+            <label>E-mail
+            <input type="email" className={errorStatus} onChange={this.update("email")} value={this.state.mail} />
             </label>
           </li>
           <li>
             <label >Username
-            <input type="text" onChange={this.update("username")} value={this.state.username}/>
+            <input type="text" className={errorStatus} onChange={this.update("username")} value={this.state.username}/>
             </label>
           </li>
           <li>
             <label >Password
-            <input type="password" onChange={this.update("password")} value={this.state.password} />
+            <input type="password" className={errorStatus} onChange={this.update("password")} value={this.state.password} />
             </label>
           </li>
+            <li className="errors">
+              {this.props.errors}
+            </li>
           <li>
-            <input type="submit" value="Sign Up"/>
+            <input className="login-signup-button" type="submit" value="Sign Up"/>
           </li>
         </ul>
         </form>

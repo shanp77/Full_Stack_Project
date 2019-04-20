@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
       log_in(@user)
       render :show
     else
-      render json: "failed login", status: 401
+      render json: @user.errors.full_messages, status: 401
     end
 
   end
