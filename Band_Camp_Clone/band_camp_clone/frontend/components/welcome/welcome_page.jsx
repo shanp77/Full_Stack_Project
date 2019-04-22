@@ -1,32 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavMenu from './nav_menu';
 
 const welcomePage = (props) => {
+  
+  const demoLogin = (e) => {
+   
+    e.preventDefault();
+    let user = {
+      username: "guest",
+      password: "password1"
+    };
+    return props.logInUser(user);
+  };
 
   const loggedOutView = () => (
+    
     <div className="nav-logged-out">
+      <Link to="/" >
       <div className="site-logo"></div>
+      </Link>
       <div className="nav-logged-out-links">
-          <Link to='/signup'>sign up</Link>
+          <button onClick={demoLogin}>guest login</button>
+          <button onClick={() => props.openModal("signup")}>sign up</button>
           <Link to='/login'>log in</Link>
       </div>
     
     </div>
   )
+  
     const personalGreeting = () => (
       <div className="nav-logged-in">
 
-        <div className="site-logo">
-          <img src="../../../config/logo.png" alt=""/>
+         <Link to="/" ><div className="site-logo">
+         <img src="../../../config/logo.png" alt=""/>
         </div>
+        </Link>
         <div className="nav-logged-in-right">
-          <h3>Welcome {props.currentUser.username}</h3>
-          <button onClick={props.logOut}>Log Out</button>
+          {/* <h3>Welcome {props.currentUser.username}</h3> */}
+          <NavMenu logout={props.logOut} username={props.currentUser.username}/>
         </div>
-        
-      </div >
+      </div>
     );
-      //debugger
+     
     return props.currentUser ? personalGreeting() : loggedOutView()
 }
 

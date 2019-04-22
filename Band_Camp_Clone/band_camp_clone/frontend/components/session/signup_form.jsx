@@ -9,9 +9,17 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillMount() {
+    this.props.clearErrors();
+  }
+  
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    return this.props.createUser(this.state).then(() => this.props.history.push('/'));
+    return this.props.createUser(this.state).then(() => this.props.closeModal());
   }
 
   update(field){ 
@@ -28,7 +36,8 @@ class SignupForm extends React.Component {
 
     return (
       <div className="form-signup">
-        <span><h2>Login</h2></span>
+        <span className="signup-header"><div>Sign up for a Bandland account</div>
+        <button id="modal-close" onClick={this.props.closeModal}>X</button></span>
         <div className="divide-line" ></div>
         <form onSubmit={this.handleSubmit}>
         <ul className="session-elements-list">

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SignupForm from './signup_form.jsx';
-import { createUser } from './../../actions/session';
+import { createUser, clearErrors } from './../../actions/session';
+import { closeModal } from './../../actions/modal_actions';
 
 const mapStateToProps = state => {
   
@@ -12,12 +13,15 @@ const mapStateToProps = state => {
   return ({
     state: localState,
     formType: "signup",
-    errors: state.errors.sessionErrors
+    errors: state.errors.sessionErrors,
+    modal: state.modal
   });
 };
 
 const mapDispatchToProps = dispatch => ({
-  createUser: user => dispatch(createUser(user))
+  createUser: user => dispatch(createUser(user)),
+  closeModal: () => dispatch(closeModal()),
+  clearErrors: () => dispatch(clearErrors())
 });
 
 

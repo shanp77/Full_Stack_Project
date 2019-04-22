@@ -18,15 +18,11 @@ class LoginForm extends React.Component {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
-  // renderErrors() {
-  //   return (
-  //     <ul>
-  //       {this.props.errors.map( errs => {
-  //         return (<li></li>)
-  //       })}
-  //     </ul>
-  //   )
-  // }
+  componentWillUnmount() {
+    this.props.clearErrors();
+
+  }
+
   render() {
    
     let errorStatus;

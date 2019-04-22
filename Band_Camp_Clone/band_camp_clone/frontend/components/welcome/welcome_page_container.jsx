@@ -1,17 +1,21 @@
 import welcomePage from './welcome_page';
 import { connect } from 'react-redux';
-import { logOutUser } from '../../actions/session';
+import { logOutUser, logInUser } from '../../actions/session';
+import { openModal } from '../../actions/modal_actions';
 
 const msp = (state) => {
 
   let currentUser = state.entities.users[state.session.id];
   return ({
-    currentUser: currentUser
+    currentUser: currentUser,
+    formType: state.ui.formType
   });
 };
 
 const mdp = dispatch => ({
-  logOut: (id) => dispatch(logOutUser(id))
+  logOut: () => dispatch(logOutUser()),
+  openModal: (modal) => dispatch(openModal(modal)),
+  logInUser: (user) => dispatch(logInUser(user))
 });
 
 export default connect(msp, mdp)(welcomePage);
