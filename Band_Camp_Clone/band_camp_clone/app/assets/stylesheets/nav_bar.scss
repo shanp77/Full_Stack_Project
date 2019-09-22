@@ -1,0 +1,96 @@
+// Navbar
+ header {
+   border-bottom: 1px solid darkgray;
+   background-color: white;
+ }
+ .site-logo {
+   height: 50px;
+   width: 150px;
+   background-size: contain;
+   background: image-url("logo.png");
+   background-repeat: no-repeat;
+ }
+.nav-logged-out {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logged-out-links {
+  display: flex;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+.nav-logged-out-links > a {
+  font-size: 14px;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-logged-out-links > button {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+.nav-logged-in {
+  width: 100%;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;   
+  align-items: center;
+}
+
+.nav-logged-in-right {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+}
+// navbar menu
+.menu-button {
+  position: relative;
+   border: none;
+   height: 30px;
+   width: 30px;
+   background-size: contain;
+   background: image-url("menu-icon.png");
+   background-repeat: no-repeat;
+   margin-left: 20px;
+   cursor: pointer;
+ }
+.nav-menu-list {
+  position: absolute;
+  text-align: left;
+  border: 1px solid lightgray;
+  top: 30px;
+  width: 115px;
+  right: 0;
+  background: white;
+  font-size: 14px;
+}
+.nav-menu-list > li:hover {
+  background: #F3F3F3;;
+}
+
+#nav-menu-username {
+  font-weight: bold;
+  
+}
+#nav-menu-divider {
+  border-bottom: 1px solid lightgray;
+  width: auto;
+}
+
+.nav-menu-list > li {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

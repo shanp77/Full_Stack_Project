@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './store/store';
 import Root from './components/root';
-import { createUser } from './utils/session_utils';
+import { createUser, createAlbum } from './utils/session_utils';
 
 
 window.createUser = createUser;
-
+window.createAlbum = createAlbum;
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');

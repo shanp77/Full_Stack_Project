@@ -6,9 +6,10 @@ import { closeModal } from './../../actions/modal_actions';
 const mapStateToProps = state => {
   
   let localState = {
+    artistname: "",
     username: "",
     password: "",
-    email: ""
+    email: "",
   };
   return ({
     state: localState,

@@ -1,0 +1,170 @@
+
+
+
+ 
+
+ 
+
+
+// main
+main {
+  
+  text-align: center;
+  height: 100vh;
+}
+
+
+.session-header {
+  margin-bottom: 20px;
+  font-size: 19px;
+}
+.divide-line {
+  border-top: 1px dashed darkgray;
+  width: 100%;
+  margin: auto;
+  margin-top: 35px;
+}
+
+// main > signup modal
+.modal-signup-background{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+.modal-signup-child{
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-navmenu-background{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: none;
+  z-index: 10;
+}
+.modal-navmenu-child{
+  position: absolute;
+  top: 10%;
+  left: 85%;
+  background: white;
+  transform: translate(-50%, -50%);
+}
+
+
+.form-signup {
+  background: white;
+  margin-top: 55px;
+  display: inline-block;
+  height: 550px;
+  width: 500px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.signup-header {
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  font-weight: 550;
+  background-color: #f4f6f7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.signup-header > div{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  color: #2e3332;
+  width: 90%
+}
+
+
+#modal-close{
+height: 100%;
+padding-left: 18px;
+padding-right: 18px;
+border: none;
+background: none;
+font-weight: 600;
+font-size: 16px;
+color: darkgray;
+
+}
+
+#modal-close:hover{
+  color: #2e3332;
+}
+
+.errors {
+  color: red;
+}
+
+.session-elements-container {
+  text-align: center;
+  width: 100%;
+  align-items: center;
+}
+.session-elements-list {
+  text-align: left;
+  list-style: none;
+  font-size: 17px;
+  color: darkslategray;
+  margin: auto;
+  margin-top: 40px;
+ width: fit-content;
+}
+.session-elements-list > li{
+  width: 100%;
+}
+#login-link-text{
+  font-size: 13px;
+  margin-top: 41px;
+}
+.col-left {
+  width: 150px;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.input-errors {
+  border: 1px solid red;
+  background-color: ghostwhite;
+  
+  margin-bottom: 20px;
+  width: 300px;
+  height: 35px;
+}
+
+.input-no-errors {
+  border: 1px solid lightgray;
+  background-color: ghostwhite;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 30px;
+}
+
+
+.login-signup-button {
+  background-color: rgb(0,161,198);
+  display: flexbox;
+  border: none;
+  width: 300px;
+  height: 36px;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+
+}

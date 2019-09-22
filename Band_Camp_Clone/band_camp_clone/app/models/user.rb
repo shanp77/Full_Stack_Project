@@ -5,6 +5,17 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+  has_many :albums,
+    class_name: :Album,
+    foreign_key: :artist_id
+
+  has_many :tracks,
+    through: :albums,
+    source: :tracks
+
+  has_one_attached :banner_img
+  has_one_attached :artist_img
+  
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)

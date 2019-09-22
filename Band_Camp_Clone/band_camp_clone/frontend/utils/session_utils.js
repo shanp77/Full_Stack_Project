@@ -1,3 +1,12 @@
+// payload utils
+export const fetchPayload = (id) => {
+
+  return $.ajax({
+    method: "GET",
+    url: `api/users/${id}`,
+  });
+};
+// session utils
 export const createUser = (user) => {
 
   return $.ajax({
@@ -19,5 +28,60 @@ export const deleteSession = () => {
   return $.ajax({
     method: "DELETE",
     url: `api/session/`
+  });
+};
+
+// album utils
+
+export const fetchAlbum = id => {
+  
+  return $.ajax({
+    method: "GET",
+    url: `api/albums/${id}`
+  });
+};
+
+export const fetchAlbums = (id) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/users/${id}/albums`
+  });
+};
+
+export const createAlbum = (album) => {
+  return $.ajax({
+    method: 'POST',
+    url: `api/users/${album.id}/albums`,
+    data: { album }
+  });
+};
+
+//track utils
+export const fetchTrack = id => {
+  return $.ajax({
+    method: "GET",
+    url: `api/tracks/${id}`
+  });
+};
+
+export const fetchTracks = (id) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/users/${id}/tracks`
+  });
+};
+
+export const createTrack = (track) => {
+  return $.ajax({
+    method: "POST",
+    url: `api/albums/${track.album_id}/tracks`
+  });
+};
+
+// search utils
+export const fetchSearchResults = (results) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/albums/${track.album_id}/tracks`
   });
 };

@@ -48,7 +48,7 @@ const mdp = dispatch => ({
         <ul className="nav-menu-list">
           <li id="nav-menu-username">{this.props.username}</li>
           <div id="nav-menu-divider"></div>
-          <li><div onClick={this.props.logOut}>log out</div></li>
+              <li onClick={this.props.logOut}><div>log out</div></li>
         </ul>)
         :
         (null)}

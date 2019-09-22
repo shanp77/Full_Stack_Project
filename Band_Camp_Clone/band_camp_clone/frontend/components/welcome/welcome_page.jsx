@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavMenu from './nav_menu';
-
+import SearchBar from './search_bar';
 const welcomePage = (props) => {
   
   const demoLogin = (e) => {
-   
     e.preventDefault();
     let user = {
-      username: "guest",
-      password: "password1"
+      username: "shane",
+      password: "password"
     };
     return props.logInUser(user);
   };
@@ -20,10 +19,11 @@ const welcomePage = (props) => {
       <Link to="/" >
       <div className="site-logo"></div>
       </Link>
+      <SearchBar />
       <div className="nav-logged-out-links">
           <button onClick={demoLogin}>guest login</button>
           <button onClick={() => props.openModal("signup")}>sign up</button>
-          <Link to='/login'>log in</Link>
+         <Link to='/login'>log in</Link>
       </div>
     
     </div>
@@ -32,10 +32,7 @@ const welcomePage = (props) => {
     const personalGreeting = () => (
       <div className="nav-logged-in">
 
-         <Link to="/" ><div className="site-logo">
-         <img src="../../../config/logo.png" alt=""/>
-        </div>
-        </Link>
+         <Link to="/" ><div className="site-logo"></div></Link>
         <div className="nav-logged-in-right">
           {/* <h3>Welcome {props.currentUser.username}</h3> */}
           <NavMenu logout={props.logOut} username={props.currentUser.username}/>
