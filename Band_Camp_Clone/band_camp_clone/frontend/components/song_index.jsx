@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import SongIndexItem from './song_index_item';
 
 let msp = (state) => {
 
@@ -15,8 +15,14 @@ class SongIndex extends React.Component {
   }
 
   render() {
-
+    let songs = [];
+    if(this.props.songList) {
+      songs = this.props.songList.map(song => {
+        return (<SongIndexItem key={song.ord} ord={song.ord} title ={song.title} url={song.song_url} playSong={this.props.playSong} length={song.length}/>)
+      });
+    }
     
+    return songs;
   }
 }
 

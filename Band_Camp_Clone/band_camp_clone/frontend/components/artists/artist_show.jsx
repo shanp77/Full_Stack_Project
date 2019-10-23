@@ -44,7 +44,7 @@ class ArtistShow extends React.Component {
         
       })
     }
-
+    
     return (
       <div>
         <div id="main-content">

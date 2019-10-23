@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavMenu from './nav_menu';
 import SearchBar from './search_bar';
+
 const welcomePage = (props) => {
   
   const demoLogin = (e) => {
@@ -16,8 +17,8 @@ const welcomePage = (props) => {
   const loggedOutView = () => (
     
     <div className="nav-logged-out">
-      <Link to="/" >
-      <div className="site-logo"></div>
+      <Link className="logo-link" to="/" >
+        <img className="site-logo" src={require('./logo.png')} />
       </Link>
       <SearchBar />
       <div className="nav-logged-out-links">
@@ -32,7 +33,7 @@ const welcomePage = (props) => {
     const personalGreeting = () => (
       <div className="nav-logged-in">
 
-         <Link to="/" ><div className="site-logo"></div></Link>
+        <Link to="/" ><img className="site-logo" src={'logo.png'} /></Link>
         <div className="nav-logged-in-right">
           {/* <h3>Welcome {props.currentUser.username}</h3> */}
           <NavMenu logout={props.logOut} username={props.currentUser.username}/>

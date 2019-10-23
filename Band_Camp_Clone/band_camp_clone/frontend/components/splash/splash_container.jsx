@@ -1,18 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Splash from './splash';
-
+import { fetchArtists } from '../../actions/artist_actions';
+import Splash from './splash'; 
+import {
+  selectCurrentUser, selectAllArtists
+} from '../../reducers/selectors';
 const msp = state => {
-  
+
   return ({
-    state: ""
+    artists: selectAllArtists(state)
   });
 };
 
 const mdp = dispatch => {
 
   return ({
-    default: ""
+    fetchArtists: () => dispatch(fetchArtists())
   });
 };
 

@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "file-loader": "^4.2.0",
     "lodash": "4.17.14",
     "react": "^16.8.6",
     "react-audio-player": "^0.11.1",
@@ -39,5 +40,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "url-loader": "^2.1.0"
+  }
 }

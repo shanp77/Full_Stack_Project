@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 root to: 'root#root'
 
  namespace :api, defaults: {format: :json} do
-  resources :users, only: [:create, :show, :destroy]
+  resources :users, only: [:create, :index, :show, :destroy]
   resource :session, only: [:create, :destroy]
   resources :albums, only: [:show]
   resources :tracks, only: [:show]
+
+  resources :users, only: [:index]
 
   resources :users, only: [:show] do
     resources :albums, only: [:index, :create] 

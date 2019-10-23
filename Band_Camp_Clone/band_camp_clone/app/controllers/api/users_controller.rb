@@ -14,6 +14,15 @@ class Api::UsersController < ApplicationController
 
   end
 
+  def index
+    @artists = User.all
+
+    if @artists
+      render :index
+    end
+
+  end
+
   def show
     @user = User.find(params[:id])
 

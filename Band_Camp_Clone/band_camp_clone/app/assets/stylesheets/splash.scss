@@ -13,3 +13,63 @@
   height: 623px;
   width: 623px;
 }
+
+.artist-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 50px;
+}
+
+.artist-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.artist-image {
+  max-width: 205px;
+  max-height: 150px;
+  min-height:150px;
+}
+
+.artist-name {
+  padding-top: 5px;
+  padding-left: 15px;
+}
+
+.featured-artists {
+  display: flex;
+  max-height: 90vh;
+}
+
+// .featured-left-col {
+//   width: 75vw;
+// }
+
+// .featured-left-col > img {
+//   min-width: 75vw;
+// }
+#left-featured-img-container {
+  max-height: 100%;
+}
+
+#left-featured-img {
+  min-width: 75vw;
+  object-fit: cover;
+  padding-bottom: 3px;
+  max-height: 100%;
+}
+
+.featured-right-col {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+}
+
+.featured-right-col > img {
+  padding-bottom: 3px;
+  padding-left: 2px;
+  max-height: 200px;
+}

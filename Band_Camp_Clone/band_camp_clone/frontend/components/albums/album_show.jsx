@@ -1,16 +1,38 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactAudioPlayer from 'react-audio-player';
 import {Link} from 'react-router-dom';
 import SongIndex from '../song_index.jsx';
-
+import sound from './bensound-cute.mp3';
 class AlbumShow extends React.Component {
 
   constructor(props) {
     super(props);
     this.album = null;
     this.state = {
-      artistId: this.props.match.params.artistId
+      artistId: this.props.match.params.artistId,
+      currentTrackUrl: null,
+      currentTrackNumber: null,
+      isPlaying: false
     };
+
+    // class properties
+    this.myAudio = null;
+    this.tracksLoaded = false;
+    this.songs = null;
+    this.listenersSet = false;
+
+    // bind functions to 'this'
+    this.playSong = this.playSong.bind(this);
+    this.onEnded = this.onEnded.bind(this);
+    this.togglePlayBack = this.togglePlayBack.bind(this);
+
+    this.rap = null;
+
+    setInterval( () => {console.log(this.state.isPlaying);}, 1000);
+  }
+
+  componentDidUpdate() {
     
   }
 
@@ -18,14 +40,56 @@ class AlbumShow extends React.Component {
     console.log(this.state.artistId);
     this.props.fetchPayload(this.state.artistId);
     
+    
   }
 
+  togglePlayBack(isPlaying) {
+    this.setState({isPlaying});
+  }
 
+  playSong(trackId) {
+
+    // convert array element number to track number
+    let track = trackId + 1;
+
+    console.log(track, this.state.currentTrackUrl);
+    if(track !== this.state.currentTrackNumber) {
+      this.setState({currentTrackUrl: this.props.tracks[trackId].song_url});
+      this.setState({ currentTrackNumber: this.props.tracks[trackId].ord });
+    } else if(this.state.isPlaying === false){
+        this.myAudio.play();
+    } else if(this.state.isPlaying === true) {
+        this.myAudio.pause();
+    }
+  }
+
+  onEnded() {
+    // if last track has ended, stop playback
+    if(this.state.trackNumber === this.props.tracks.length) return;
+
+    let nextTrack = this.state.currentTrackNumber ;
+    //debugger
+    this.setState({currentTrackUrl: this.props.tracks[nextTrack].song_url});
+    this.setState({ currentTrackNumber: this.props.tracks[nextTrack].ord });
+  }
 
   render() {
     // if album tracks haven't loaded, render empty div tag
-    if(!this.props.tracks.length) return (<div></div>);
+    if(!this.props.artist) return (<div></div>);
     
+    //add event listeners for Audio tag - pause,playing
+    if (document.getElementById('myAudio') && this.listenersSet === false) {
+      
+      this.myAudio = document.getElementById('myAudio');
+      this.myAudio.addEventListener('pause', () => this.togglePlayBack(false));
+      this.myAudio.addEventListener('playing', () => this.togglePlayBack(true));
+      this.listenersSet = true;
+    }
+    
+    if(this.state.currentTrackUrl === null) {
+      this.setState({currentTrackUrl: this.props.tracks[0].song_url})
+      this.setState({ currentTrackNumber: this.props.tracks[0].ord });
+    }
     // check if artist has banner image, artist image
     let banner_img;
     let artist_img;
@@ -33,13 +97,17 @@ class AlbumShow extends React.Component {
     if(this.props.artist.hasOwnProperty("artist_img")) artist_img = this.props.artist.artist_img 
     
     // make tracks table
-    if(this.props.tracks) {
-      let songs = this.props.tracks;
-      //debugger
-      console.log(songs)
+    if(this.props.tracks && !this.tracksLoaded) {
+      this.songs = this.props.tracks;
+      this.songs.sort((a,b) => {
+        return a.ord - b.ord
+      })
+      this.tracksLoaded = true;
+      console.log(this.songs)
     }
     // render page    
     return (
+      
       <div>
         <div id="main-content">
 
@@ -56,11 +124,11 @@ class AlbumShow extends React.Component {
                   <p id="album-artist-name" className="gray-text">{this.props.currentAlbum.name}</p>
                   <p id="artist-by-line">by <Link to={`/artists/${this.state.artistId}`}><span>{this.props.artist.username}</span></Link></p>
                   <span id="song-player-container">
-                    <ReactAudioPlayer src="" controls />
+                    <ReactAudioPlayer id="myAudio" src={this.state.currentTrackUrl} autoPlay controls onEnded={this.onEnded} ref={(element) => { this.rap = element; }}/>
                   </span>
-                  <table id="album-tracks-table">
-                    {/* <SongIndex /> */}
-                  </table>
+                  <ul className="album-tracks-container">
+                    {<SongIndex songList={this.songs} playSong={this.playSong}/>}
+                  </ul>
                   <p id="release-date-line">released {this.props.currentAlbum.release_date}</p>
                   <p id="copyright-line">all rights reserved</p>
                 </div>
@@ -75,7 +143,7 @@ class AlbumShow extends React.Component {
               <div id="right-column">
                 <div className="artist-photo-container">
                   <img src={this.props.artist.artist_img} />
-                  <p id="artist-photo-name">{this.props.artist.username}</p>
+                  <p id="artist-photo-name">{this.props.artist.artistname}</p>
                 </div>
               </div>
             </div>
@@ -88,60 +156,3 @@ class AlbumShow extends React.Component {
 }
 
 export default AlbumShow;
-
-// let albumList;
-// let trackList;
-// let artist;
-// let artist_img;
-// let banner;
-// let currentAlbum;
-
-// if (!this.props.currentAlbum) {
-//   artist = null;
-// } else {
-//   artist = this.props.users[this.props.currentAlbum.artistId];
-// }
-
-// if (!this.props.artist.hasOwnProperty("banner_img")) {
-//   banner = null;
-// } else {
-//   banner = this.props.artist.banner_img;
-// }
-
-// if (!this.props.artist.hasOwnProperty("artist_img")) {
-//   artist_img = null;
-// } else {
-//   artist_img = this.props.artist.artist_img;
-// }
-
-// if (!this.props.albums) {
-//   albumsList = ["loading..."];
-// } else {
-//   currentAlbum = this.props.albums[this.props.match.params.id]
-//   let albums = Object.values(this.props.albums);
-//   let that = this;
-//   albumList = albums.map((album) => {
-//     if (album.artist_id === artist.id) {
-//       return (
-//         <li className="album-photo-list-item" key={album.id}>
-//           <div className="album-photo-container">
-//             <img src={album.photo_url} />
-//             <p>{album.name}</p>
-//           </div>
-//         </li>
-//       )
-//     }
-//   })
-// }
-
-
-// if (!this.props.tracks) {
-//   trackList = ["loading..."];
-// } else {
-//   let tracks = Object.values(this.props.tracks);
-//   trackList = tracks.map((track) => {
-//     return (
-//       <li key={track.id}>{track.title}</li>
-//     )
-//   })
-// }

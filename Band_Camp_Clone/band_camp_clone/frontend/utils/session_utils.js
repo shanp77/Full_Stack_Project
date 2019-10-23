@@ -56,6 +56,13 @@ export const createAlbum = (album) => {
   });
 };
 
+export const fetchArtists = () => {
+  return $.ajax({
+    method: "GET",
+    url: 'api/users'
+  });
+};
+
 //track utils
 export const fetchTrack = id => {
   return $.ajax({

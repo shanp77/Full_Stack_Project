@@ -3,15 +3,20 @@
    border-bottom: 1px solid darkgray;
    background-color: white;
  }
+
+ .logo-link {
+
+ }
  .site-logo {
-   height: 50px;
-   width: 150px;
-   background-size: contain;
-   background: image-url("logo.png");
-   background-repeat: no-repeat;
+  //  height: 50px;
+  //  width: 150px;
+  //  background-size: contain;
+  //  background: image-url("logo.png");
+  //  background-repeat: no-repeat;
  }
 .nav-logged-out {
   width: 100%;
+  height: 17vh;
   display: flex;
   justify-content: space-between;
   align-items: center;

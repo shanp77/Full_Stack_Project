@@ -44,11 +44,16 @@
   height: 56px;
   width: 100%;
 }
-#album-tracks-table{
+.album-tracks-container{
+  display: flex;
+  align-items: flex-start;  flex-direction: column;
   height: 200px;
   width: 100%;
   border: 1px dotted black;
   margin-top: 40px;
+}
+.album-tracks{
+
 }
 #release-date-line{
   margin-top: 30px;
@@ -114,4 +119,21 @@
 font-family: sans-serif;
 }
 
+//song_index_item.jsx
+.play-icon {
+  width: 24px;
+  height: 24px;
+}
 
+.song-index-item {
+  display: flex;
+  align-items: center;
+}
+
+.song-order {
+  padding-left: 5px;
+}
+
+.song-length {
+  padding-left: 5px;
+}

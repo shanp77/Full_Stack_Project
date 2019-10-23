@@ -1,6 +1,6 @@
 class Track < ApplicationRecord
   validates :title, :album_id, :ord, presence: true
-  validates :ord, uniqueness: true
+  #validates :ord, uniqueness: true
   belongs_to :album,
     class_name: :Album,
     foreign_key: :album_id
@@ -8,5 +8,7 @@ class Track < ApplicationRecord
   has_one :artist,
     through: :album,
     source: :artist
+
+  has_one_attached :song_url
 
 end
