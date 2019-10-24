@@ -18,7 +18,7 @@ const welcomePage = (props) => {
     
     <div className="nav-logged-out">
       <Link className="logo-link" to="/" >
-        <img className="site-logo" src={require('./logo.png')} />
+        <img className="site-logo" src="logo.png" />
       </Link>
       <SearchBar />
       <div className="nav-logged-out-links">
@@ -33,7 +33,7 @@ const welcomePage = (props) => {
     const personalGreeting = () => (
       <div className="nav-logged-in">
 
-        <Link to="/" ><img className="site-logo" src={'logo.png'} /></Link>
+        <Link to="/" ><img className="site-logo" src="logo.png" /></Link>
         <div className="nav-logged-in-right">
           {/* <h3>Welcome {props.currentUser.username}</h3> */}
           <NavMenu logout={props.logOut} username={props.currentUser.username}/>

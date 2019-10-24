@@ -32,7 +32,6 @@ export const deleteSession = () => {
 };
 
 // album utils
-
 export const fetchAlbum = id => {
   
   return $.ajax({
@@ -56,6 +55,7 @@ export const createAlbum = (album) => {
   });
 };
 
+// artist utils
 export const fetchArtists = () => {
   return $.ajax({
     method: "GET",

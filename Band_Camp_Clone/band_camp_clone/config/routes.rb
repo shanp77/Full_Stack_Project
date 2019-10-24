@@ -8,7 +8,7 @@ root to: 'root#root'
   resources :albums, only: [:show]
   resources :tracks, only: [:show]
 
-  resources :users, only: [:index]
+  #resources :users, only: [:index]
 
   resources :users, only: [:show] do
     resources :albums, only: [:index, :create] 

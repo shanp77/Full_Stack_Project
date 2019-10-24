@@ -35,8 +35,16 @@
 }
 
 .artist-name {
-  padding-top: 5px;
+  padding-top: 10px;
   padding-left: 15px;
+  padding-right: 15px;
+  color: gray;
+}
+
+.album-name {
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .featured-artists {

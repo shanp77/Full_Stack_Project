@@ -18,6 +18,7 @@ class Api::UsersController < ApplicationController
     @artists = User.all
 
     if @artists
+      
       render :index
     end
 

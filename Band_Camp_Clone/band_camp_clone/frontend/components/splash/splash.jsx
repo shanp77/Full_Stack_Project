@@ -1,5 +1,5 @@
 import React from 'react';
-import default_img from '../../icons/play_button.png';
+import default_img from '../../icons/default_img.png';
 import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
@@ -22,12 +22,25 @@ render() {
   if(Object.keys(this.props.artists).length === 0) return (<div></div>)
 
   let artists = Object.values(this.props.artists).map(artist => {
-    return(
-      <li key={artist.id} className="artist-list-item">
-        <img className="artist-image" src={artist.banner_img ? artist.banner_img : default_img} />
-        <span className="artist-name">{artist.artistname}</span>
-      </li>
-    )
+    if(artist.albums) {
+      // feature random album from artist's discography
+      let randomId = Math.floor(Math.random() * (Object.keys(artist.albums).length) + 1);
+      let featuredAlbum = artist.albums[randomId]; 
+      return(
+        <li key={artist.id} className="artist-list-item">
+          <img className="artist-image" src={featuredAlbum.cover_photo ? featuredAlbum.cover_photo : default_img} />
+          <span className="album-name">{featuredAlbum.name}</span>
+          <span className="artist-name">{artist.artistname}</span>
+        </li>
+      )
+    } else {
+      return (
+        <li key={artist.id} className="artist-list-item">
+          <img className="artist-image" src={artist.banner_img ? artist.banner_img : default_img} />
+          <span className="artist-name">{artist.artistname}</span>
+        </li>
+      )
+    }
   })
   //debugger
   return (
