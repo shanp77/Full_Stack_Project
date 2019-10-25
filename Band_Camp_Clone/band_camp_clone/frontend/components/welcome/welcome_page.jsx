@@ -18,7 +18,7 @@ const welcomePage = (props) => {
     
     <div className="nav-logged-out">
       <Link className="logo-link" to="/" >
-        <img className="site-logo" src="logo.png" />
+        <img className="site-logo" src={require('./logo.png')} />
       </Link>
       <SearchBar />
       <div className="nav-logged-out-links">
