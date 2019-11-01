@@ -98,10 +98,10 @@ class AlbumShow extends React.Component {
     if(document.getElementById('myAudio').currentTime) {
       
       timeInSecs = Math.floor(document.getElementById('myAudio').currentTime);
-
-      if(timeInSecs) {
-        this.setProgressThumb(timeInSecs);
-      }
+      this.setProgressThumb(timeInSecs);
+      // if(timeInSecs) {
+      //   this.setProgressThumb(timeInSecs);
+      // }
       //console.log(timeInSecs);
     } else {
       document.getElementById("player-time-elapsed").innerHTML = "0:00";
