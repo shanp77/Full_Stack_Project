@@ -4,6 +4,21 @@
    background-color: white;
  }
 
+ .nav-left{
+  display: flex;
+  flex-direction: column;
+  padding-left: 90px;
+ }
+
+ .site-logo {
+  width: 145px;
+  padding-bottom: 15px;
+ }
+
+ .sub-logo-text{
+   font-size: 18px;
+ }
+ 
  .logo-link {
 
  }

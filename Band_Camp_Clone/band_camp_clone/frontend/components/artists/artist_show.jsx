@@ -32,7 +32,7 @@ class ArtistShow extends React.Component {
       let that = this;
       albumsList = albums.map( (album) => {
         return (
-          <Link to={`/artists/${album.artist_id}/albums/${album.id}`}>
+          <Link to={`/artists/${album.artist_id}/albums/${album.id}`} style={ {textDecoration: 'none'} } >
           <li className="album-photo-list-item" key={album.id}>
             <div className="album-photo-container">
               <img src={album.photo_url} />
@@ -49,11 +49,11 @@ class ArtistShow extends React.Component {
       <div>
         <div id="main-content">
 
-          <div id="banner-image-container-outer">
+          <Link to={`/artists/${this.props.artist.id}`} id="banner-image-container-outer">
             <div id="banner-image-container-inner">
               <img src={banner_img} alt="" />
             </div>
-          </div>
+          </Link>
           
           <div id="artist-main-columns-container-outer">
             <div id="artist-main-columns-container-inner">
@@ -66,7 +66,7 @@ class ArtistShow extends React.Component {
               <div id="right-column">
                 <div className="artist-photo-container">
                   <img src={artist_img} />
-                  <p id="artist-photo-name">{this.props.artist.username}</p>
+                  <p id="artist-photo-name">{this.props.artist.artistname}</p>
                 </div>
               </div>
 

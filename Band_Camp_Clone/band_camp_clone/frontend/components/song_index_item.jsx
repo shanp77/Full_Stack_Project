@@ -27,7 +27,7 @@ class SongIndexItem extends React.Component {
         <img className="play-icon" src={require("../icons/play_button.png")} alt="" />
       </span>
       <span className="song-order">{this.props.ord}. </span>
-      <span>{this.props.title}</span>
+      <span className="song-title">{this.props.title}</span>
       <span className="song-length">{length}</span>
     </li>
     )

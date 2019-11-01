@@ -36,7 +36,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --mode=development --watch",
     "postinstall": "webpack",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",

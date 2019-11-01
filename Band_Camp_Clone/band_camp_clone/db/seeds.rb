@@ -7,29 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
-#users
+#users 
 user = User.create!(username: "hornet", artistname: "The Hornets", email: "hornet@aol.com", password: "password")
 #file = File.open("/home/shannon/Pictures/rhythm_kings_1.jpg")
-file2 = File.open("/home/shannon/Desktop/aA/FullStack_Project/the_hornets-artist_img.jpg")
+file2 = open("https://band-land-seeds.s3.us-west-1.amazonaws.com/the_hornets-artist_img.jpg")
 #user.banner_img.attach(io: file, filename: "rhythm_kings_1.jpg")
 user.artist_img.attach(io: file2, filename: "the_hornets-artist_img.jpg")
 
 user = User.create(username: "sally", artistname: "San Francisco", email: "sanfran@aol.com", password: "password")
 #file = File.open("/home/shannon/Pictures/rhythm_kings_1.jpg")
-file2 = File.open("/home/shannon/Desktop/aA/FullStack_Project/san_francisco-artist_img.jpg")
+file2 = open("https://band-land-seeds.s3-us-west-1.amazonaws.com/san_francisco-artist_img.jpg")
 #user.banner_img.attach(io: file, filename: "rhythm_kings_1.jpg")
 user.artist_img.attach(io: file2, filename: "san_francisco-artist_img.jpg")
 
 user = User.create(username: "rocker", artistname: "The Rockers", email: "rock@aol.com", password: "password")
 #file = File.open("/home/shannon/Pictures/rhythm_kings_1.jpg")
-file2 = File.open("/home/shannon/Desktop/aA/FullStack_Project/the_rockers-artist-img.png")
+file2 = open("https://band-land-seeds.s3-us-west-1.amazonaws.com/the_rockers-artist-img.png")
 #user.banner_img.attach(io: file, filename: "rhythm_kings_1.jpg")
 user.artist_img.attach(io: file2, filename: "the_rockers-artist-img.png")
 
 user = User.create(username: "shane", artistname: "Rhythm Kings", email: "jazz1@aol.com", password: "password")
-file = File.open("/home/shannon/Pictures/rhythm_kings_1.jpg")
-file2 = File.open("/home/shannon/Desktop/aA/FullStack_Project/rhythm_kings-artist_img.jpg")
-user.banner_img.attach(io: file, filename: "rhythm_kings_1.jpg")
+file = open("https://band-land-seeds.s3-us-west-1.amazonaws.com/rhythm_kings-banner_img.jpg")
+file2 = open("https://band-land-seeds.s3-us-west-1.amazonaws.com/rhythm_kings-artist_img.jpg")
+user.banner_img.attach(io: file, filename: "rhythm_kings-banner_img.jpg")
 user.artist_img.attach(io: file2, filename: "rhythm_kings-artist_img.jpg")
 
 User.create(username: "bob", artistname: "Bob Crooner", email: "bob@aol.com", password: "password")
@@ -74,15 +74,15 @@ Album.create(name: "Just for a Thrill", artist_id: 4, release_date: "2018-07-05"
 Album.create(name: "Struttin Our Stuff", artist_id: 4, release_date: "2014-02-05")
 Album.create(name: "Studio Time", artist_id: 4, release_date: "2013-12-05")
 
-file = File.open("/home/shannon/Pictures/rhythm_kings-groovin.jpg")
+file = open("https://band-land-seeds.s3-us-west-1.amazonaws.com/rhythm_kings-groovin.jpg")
 album=Album.find_by(name: "Groovin")
 album.cover_photo.attach(io: file, filename: "rhythm_kings-groovin.jpg") 
 
-file = File.open("/home/shannon/Pictures/rhythm_kings-studio_time.jpg")
+file = open("https://band-land-seeds.s3-us-west-1.amazonaws.com/rhythm_kings-studio_time.jpg")
 album=Album.find_by(name: "Studio Time")
 album.cover_photo.attach(io: file, filename: "rhythm_kings-studio_time.jpg") 
 
-file = open("/home/shannon/Pictures/rhythm_kings-just_for_a_thrill.jpg")
+file = open("https://band-land-seeds.s3-us-west-1.amazonaws.com/rhythm_kings-just_for_a_thrill.jpg")
 album=Album.find_by(name: "Just for a Thrill")
 album.cover_photo.attach(io: file, filename: "rhythm_kings-just_for_a_thrill.jpg")
 

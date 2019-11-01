@@ -17,9 +17,14 @@ const welcomePage = (props) => {
   const loggedOutView = () => (
     
     <div className="nav-logged-out">
-      <Link className="logo-link" to="/" >
-        <img className="site-logo" src={require('./logo.png')} />
-      </Link>
+      <div className="nav-left">
+        <Link className="logo-link" to="/" >
+          <img className="site-logo" src={require('./logo.png')} />
+        </Link>
+        <div className="sub-logo-text">Discover amazing new music you never knew didn't exist</div>
+      </div>
+      
+
       <SearchBar />
       <div className="nav-logged-out-links">
           <button onClick={demoLogin}>guest login</button>

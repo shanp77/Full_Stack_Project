@@ -37,19 +37,74 @@
 #artist-by-line{
   margin-top: 8px;
 }
+// audio player
 #song-player-container{
-  border: 1px solid black;
+  
   margin-top: 20px;
   display: flex;
+  flex-direction: row;
   height: 56px;
   width: 100%;
 }
+#player-play-icon{
+  border: none;
+}
+#player-icon-background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 52px;
+  background: white;
+  border: 1px solid gray;
+}
+#player-info-container{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1
+}
+#player-title-tracktime{
+  display: flex;
+  flex-grow: 1;
+  padding-left: 10px;
+  align-items: center;
+}
+#player-time-elapsed{
+  padding-left: 5px;
+  padding-right: 2px;
+}
+#player-time-duration{
+  padding-left: 2px;
+}
+#player-progress-bar-cell{
+  display: flex;
+  flex-grow: 1;
+  padding-left: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#player-progress-bar{
+  display: flex;
+  border: 1px solid gray;
+  position: relative;
+  width: 100%;
+  height: 10px;
+}
+#player-thumb{
+  border: 1px solid #bebebe;
+  background: white;
+  top: -2px;
+  margin-left: -2px;
+  position: absolute;
+  width: 22px;
+  height: 12px;
+}
+
 .album-tracks-container{
   display: flex;
   align-items: flex-start;  flex-direction: column;
   height: 200px;
   width: 100%;
-  border: 1px dotted black;
   margin-top: 40px;
 }
 .album-tracks{
@@ -128,12 +183,17 @@ font-family: sans-serif;
 .song-index-item {
   display: flex;
   align-items: center;
+  padding-bottom: 5px;
 }
 
 .song-order {
-  padding-left: 5px;
+  padding-left: 15px;
+  color: #888888;
 }
-
+.song-title{
+  color: #0687F5;
+}
 .song-length {
-  padding-left: 5px;
+  padding-left: 10px;
+  color: #888888;
 }
