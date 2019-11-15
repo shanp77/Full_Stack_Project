@@ -5,7 +5,7 @@
       json.albums do
         artist.albums.each do |album|
           json.set! album.id do
-            json.extract! album, :id, :name
+            json.extract! album, :id, :name, :artist_id
             json.cover_photo url_for(album.cover_photo) if album.cover_photo.attached?
           end
         end

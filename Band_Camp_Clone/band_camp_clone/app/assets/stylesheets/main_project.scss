@@ -7,10 +7,23 @@
 
 
 // main
+
+.outer-body {
+  position: relative;
+  display: flex;
+}
+
+.nav-bar {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
 main {
-  
   text-align: center;
   height: 100vh;
+  width: 100%;
+  margin-top: 17vh;
 }
 
 

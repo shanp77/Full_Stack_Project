@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactAudioPlayer from 'react-audio-player';
 import {Link} from 'react-router-dom';
 import SongIndex from '../song_index.jsx';
-import sound from './bensound-cute.mp3';
+
 class AlbumShow extends React.Component {
 
   constructor(props) {
@@ -16,7 +16,7 @@ class AlbumShow extends React.Component {
       isPlaying: false,
       firstLoad: true
     };
-
+    window.scrollTo(0, 0);
     // class properties
     this.myAudio = null;
     this.tracksLoaded = false;
@@ -48,18 +48,25 @@ class AlbumShow extends React.Component {
 
   playSong(trackId = this.state.currentTrackNumber - 1) {
     if(this.state.firstLoad) this.setState({firstLoad: false});
-    //debugger
-
+    
+    let icon = document.getElementById("player-play-icon");
+    // let smallIcon = document.
     // convert array element number to track number
     let track = trackId + 1;
 
     if(track !== this.state.currentTrackNumber) {
+      // change track and start autoplaying, setting icon to 'pause'
       this.setState({currentTrackUrl: this.props.tracks[trackId].song_url});
       this.setState({ currentTrackNumber: this.props.tracks[trackId].ord });
+      icon.src = require('./player-pause-icon.png');
+      // if audio paused, start playing and set icon to 'pause'
     } else if(this.state.isPlaying === false){
         this.myAudio.play();
+        icon.src = require('./player-pause-icon.png');
+      // if audio playing, pause audio and set icon to 'play'
     } else if(this.state.isPlaying === true) {
         this.myAudio.pause();
+        icon.src = require('./player-play-icon.png');
     }
   }
 
@@ -136,7 +143,7 @@ class AlbumShow extends React.Component {
 
   render() {
     // if album tracks haven't loaded, render empty div tag
-    if(!this.props.artist) return (<div></div>);
+    if(!this.props.artist || !this.props.tracks.length) return (<div></div>);
     
     //add event listeners for Audio tag - pause,playing
     if (document.getElementById('myAudio') && this.listenersSet === false) {
@@ -152,8 +159,9 @@ class AlbumShow extends React.Component {
     if (this.state.firstLoad === false) {
       this.myAudio.autoplay = true;
     }
-
+    
     if(this.state.currentTrackUrl === null) {
+      //debugger
       this.setState({currentTrackUrl: this.props.tracks[0].song_url})
       this.setState({ currentTrackNumber: this.props.tracks[0].ord });
     }
@@ -188,7 +196,7 @@ class AlbumShow extends React.Component {
               <div id="album-left-middle-columns">
                 <div id="album-info-column">
                   <p id="album-artist-name" className="gray-text">{this.props.currentAlbum.name}</p>
-                  <p id="artist-by-line">by <Link to={`/artists/${this.state.artistId}`}><span>{this.props.artist.username}</span></Link></p>
+                  <p id="artist-by-line">by <Link to={`/artists/${this.state.artistId}`} style={{ textDecoration: 'none' }}><span className="by">{this.props.artist.artistname}</span></Link></p>
                   <span id="song-player-container">
                     <ReactAudioPlayer id="myAudio" src={this.state.currentTrackUrl} 
                       onTimeUpdate={this.getCurrentTime()} onEnded={this.onEnded} 
@@ -215,7 +223,9 @@ class AlbumShow extends React.Component {
                     </div>
                   </span>
                   <ul className="album-tracks-container">
-                    {<SongIndex songList={this.songs} playSong={this.playSong}/>}
+                    {<SongIndex songList={this.songs} playSong={this.playSong} 
+                      currentSong={this.state.currentTrackNumber} isPlaying={this.state.isPlaying}
+                      firstLoad={this.state.firstLoad}/>}
                   </ul>
                   <p id="release-date-line">released {this.props.currentAlbum.release_date}</p>
                   <p id="copyright-line">all rights reserved</p>
@@ -232,6 +242,11 @@ class AlbumShow extends React.Component {
                 <div className="artist-photo-container">
                   <img src={this.props.artist.artist_img} />
                   <p id="artist-photo-name">{this.props.artist.artistname}</p>
+                </div>
+                <div className="discography-container">
+                  <Link to={`/artists/${this.props.artist.id}`} style={{ textDecoration: 'none', color: "gray" }}>
+                    <span id="discography-label">discography</span>
+                  </Link>
                 </div>
               </div>
             </div>

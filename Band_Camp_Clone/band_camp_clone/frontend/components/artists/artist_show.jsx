@@ -5,6 +5,8 @@ class ArtistShow extends React.Component {
   constructor(props) {
     super(props);
     this.album = null;
+
+    window.scrollTo(0, 0);
   }
 
   componentDidMount() {
@@ -16,7 +18,7 @@ class ArtistShow extends React.Component {
   
   render () {
     // check to see if album list for artist has downloaded
-    if (!this.props.albums.length) return (<div></div>)
+    if (!this.props.artist) return (<div></div>)
 
     // check if artist has banner image, artist image
     let banner_img;

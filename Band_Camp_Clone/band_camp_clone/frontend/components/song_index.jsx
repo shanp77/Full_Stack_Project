@@ -18,7 +18,11 @@ class SongIndex extends React.Component {
     let songs = [];
     if(this.props.songList) {
       songs = this.props.songList.map(song => {
-        return (<SongIndexItem key={song.ord} ord={song.ord} title ={song.title} url={song.song_url} playSong={this.props.playSong} length={song.length}/>)
+        return (<SongIndexItem key={song.ord} ord={song.ord} 
+                  title ={song.title} url={song.song_url} 
+                  playSong={this.props.playSong} length={song.length}
+                  currentSong={this.props.currentSong} isPlaying={this.props.isPlaying}
+                  firstLoad={this.props.firstLoad}/>)
       });
     }
     

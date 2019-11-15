@@ -9,6 +9,7 @@ export const selectCurrentAlbum = (state, albumId) => {
 };
 
 export const selectArtist = (state, artistId) => {
+  
   return state.entities.users[artistId];
 };
 
@@ -17,10 +18,10 @@ export const selectAllArtists = (state) => {
 };
 
 export const selectAllTracks = (state, albumId) => {
-  
   let album = selectCurrentAlbum(state, albumId);
+  // debugger
   let tracks = null;
-  if(state.entities.tracks) {
+  if(state.entities.tracks && album) {
     tracks = Object.values(state.entities.tracks).filter(track => {
       
       return track.album_id === album.id;
@@ -31,12 +32,13 @@ export const selectAllTracks = (state, albumId) => {
 };
 
 export const selectAllAlbums = (state, artistId) => {
-  let artistAlbums;
+  let artistAlbums = [];
   
   if (state.entities.albums) {
     let array = Object.values(state.entities.albums);
-    artistAlbums = array.map(album => {
-      if (album.artist_id === artistId) return album;
+    
+    array.forEach(album => {
+      if (album.artist_id === artistId) artistAlbums.push(album);
     });
   }
   

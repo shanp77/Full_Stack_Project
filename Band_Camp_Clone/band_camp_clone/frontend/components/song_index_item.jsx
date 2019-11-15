@@ -20,11 +20,23 @@ class SongIndexItem extends React.Component {
     
     var length = this.props.length ? `${minutes}:${seconds}` : null;
 
+    // choose play or pause icon
+    var icon = null;
+    if(this.props.firstLoad === false) {
+      if((this.props.ord === this.props.currentSong) && this.props.isPlaying) {
+        icon = require("../icons/pause_button.png");
+      } else {
+        icon = require("../icons/play_button.png");
+      }
+    } else {
+      icon = require("../icons/play_button.png");
+    }
+
     //song index item jsx
     return (
     <li className="song-index-item" key={this.props.ord}>
       <span className="play-icon-container" onClick={ () => {playSong(trackId)} }>
-        <img className="play-icon" src={require("../icons/play_button.png")} alt="" />
+        <img className="play-icon" src={icon} alt="" />
       </span>
       <span className="song-order">{this.props.ord}. </span>
       <span className="song-title">{this.props.title}</span>

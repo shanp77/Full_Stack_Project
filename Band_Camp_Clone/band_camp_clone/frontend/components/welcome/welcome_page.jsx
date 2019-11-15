@@ -21,15 +21,19 @@ const welcomePage = (props) => {
         <Link className="logo-link" to="/" >
           <img className="site-logo" src={require('./logo.png')} />
         </Link>
-        <div className="sub-logo-text">Discover amazing new music you never knew didn't exist</div>
+        <div className="sub-logo-text">Discover amazing new music and help out the artists who make it</div>
       </div>
       
 
-      <SearchBar />
-      <div className="nav-logged-out-links">
-          <button onClick={demoLogin}>guest login</button>
-          <button onClick={() => props.openModal("signup")}>sign up</button>
-         <Link to='/login'>log in</Link>
+      
+      <div className="nav-right">
+          <SearchBar />
+          <div className="nav-logged-out-links">
+            <button onClick={demoLogin}>guest login</button>
+            <button onClick={() => props.openModal("signup")}>sign up</button>
+            <Link to='/login'>log in</Link>
+          </div>
+          
       </div>
     
     </div>

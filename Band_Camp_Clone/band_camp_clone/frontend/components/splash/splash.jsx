@@ -24,13 +24,48 @@ render() {
 
   let albumOfTheDay = null;
 
-  let artists = Object.values(this.props.artists).map((artist,idx) => {
+  let artists = Object.values(this.props.artists)
+  artists = artists.filter(artist => {
+    return artist.artistname === "shane's band" ? false : true;
+  })
+
+  // get featured artists from state
+  let featuredArtist1 = artists.find(artist => {
+    return artist.artistname === "Edward Simon"
+  })
+  let featuredArtist2 = artists.find(artist => {
+    return artist.artistname === "Judy Wexler"
+  })
+  let featuredArtist3 = artists.find(artist => {
+    return artist.artistname === "Project 86"
+  })
+  let featuredArtist4 = artists.find(artist => {
+    return artist.artistname === "John Raymond"
+  })
+
+  //map albums list for bandland daily section
+  artists = artists.map((artist,idx) => {
     if(idx === 0) {
+      // feature random album from artist's discography
+      let albums = Object.values(artist.albums);
+      let randomId = Math.floor(Math.random() * (Object.keys(artist.albums).length));
+      let featuredAlbum = albums[randomId]; 
       albumOfTheDay = (
       <div className="album-of-the-day">
-        <img className="daily-album-image" src={require("../../icons/default_img.png")} />
+          <Link to={`/artists/${featuredAlbum.artist_id}/albums/${featuredAlbum.id}`}>
+            <img className="daily-album-image" src={featuredAlbum.cover_photo} />
+          </Link>
         <div className="album-of-the-day-info-box">
-          <span className="artist-name"> by {artist.artistname}</span>
+          <span className="album-of-the-day-name">
+              <Link to={`/artists/${featuredAlbum.artist_id}/albums/${featuredAlbum.id}`} style={ {textDecoration: 'none', color: 'black'} }>
+                {featuredAlbum.name}
+              </Link>
+          </span>
+          <span className="featured-artist-name">
+          <Link to={`/artists/${featuredAlbum.artist_id}`} style={{ textDecoration: 'none', color: 'black' }}>
+            by {artist.artistname}
+          </Link>
+          </span>
           <div className="category">ALBUM OF THE DAY</div>
         </div>
       </div>
@@ -38,15 +73,17 @@ render() {
       
     } else if(artist.albums) {
       // feature random album from artist's discography
-      let randomId = Math.floor(Math.random() * (Object.keys(artist.albums).length) + 1);
-      let featuredAlbum = artist.albums[randomId]; 
-      
+      let albums = Object.values(artist.albums);
+      let randomId = Math.floor(Math.random() * (Object.keys(artist.albums).length));
+      let featuredAlbum = albums[randomId]; 
       return(
         <li key={artist.id} className="artist-list-item">
-          <img className="artist-image" src={featuredAlbum.cover_photo} />
+          <Link to={`artists/${artist.id}/albums/${featuredAlbum.id}`}>
+            <img className="artist-image" src={featuredAlbum.cover_photo} />
+          </Link>
           <div className="artist-info-box">
             <span className="album-name">{featuredAlbum.name}</span>
-            <span className="artist-name">{artist.artistname}</span>
+            <span className="artist-name"><Link to={`artists/${artist.id}`}>{artist.artistname}</Link></span>
             <div className="category">LIST</div>
           </div>
           
@@ -65,17 +102,22 @@ render() {
       )
     }
   })
-  //debugger
   return (
     <div id="splash-main">
       <div className="featured-artists">
-        <Link id="left-featured-img-container" to={`/artists/${this.props.artists[4].id}`}>
-        <img id="left-featured-img" src={this.props.artists[4].artist_img} />
+        <Link id="left-featured-img-container" to={`/artists/${featuredArtist1.id}`}>
+          <img id="left-featured-img" src={featuredArtist1.artist_img} />
         </Link>
         <span className="featured-right-col">
-          <img src={this.props.artists[1].artist_img} />
-          <img src={this.props.artists[2].artist_img} />
-          <img src={this.props.artists[3].artist_img} />
+          <Link id="right-featured-img-container" to={`/artists/${featuredArtist2.id}`}>
+            <img className="right-featured-img" src={featuredArtist2.artist_img} />
+          </Link>
+          <Link id="right-featured-img-middle-container" to={`/artists/${featuredArtist3.id}`}>
+            <img className="right-featured-img" src={featuredArtist3.artist_img} />
+          </Link>
+          <Link id="right-featured-img-container" to={`/artists/${featuredArtist4.id}`}>
+            <img className="right-featured-img" src={featuredArtist4.artist_img} />
+          </Link>
         </span>
       </div>
       <div className="fan-support-message">Fans support artists on Bandland, 

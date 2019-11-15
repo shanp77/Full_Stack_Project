@@ -18,27 +18,34 @@ const mdp = dispatch => ({
 
 class SearchBar extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = this.props.state;
+    super(props);
+    this.state = {
+      query: ""
+    };
+
+    this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(e) {
-    return e => this.props.setState({query: e.target.value});
+    this.setState({query: e.target.value});
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
     e.preventDefault();
-    let query = this.state;
-    return this.props.fetchSearchResults(query);
+    let query = this.state.query;
+    console.log(this.state.query);
+    this.setState({query: ""});
+    // return this.props.fetchSearchResults(query);
   }
 
   render() {
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit} >
-          <input type="text" onChange={this.update()} value="Search and Discover music" />
-          <input type="submit" />
+        <form className="search-form" onSubmit={this.handleSubmit} >
+          <input className="search-text" type="text" onChange={this.update} placeholder="Search and Discover music" value={this.state.query} />
+          <input className="search-button" onClick={this.handleSubmit} type="submit" value="" />
         </form>
       </div>
       

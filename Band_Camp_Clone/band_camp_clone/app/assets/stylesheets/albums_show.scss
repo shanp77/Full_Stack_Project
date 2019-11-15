@@ -37,6 +37,9 @@
 #artist-by-line{
   margin-top: 8px;
 }
+.by{
+  color: #0687F5;
+}
 // audio player
 #song-player-container{
   
@@ -158,6 +161,15 @@
 
 // right column
 
+#right-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.discography-container{
+  display: flex;
+  justify-content: left;
+}
 .artist-photo-container{
   width: 120px;
   height: 120px;

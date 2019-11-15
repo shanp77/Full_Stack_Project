@@ -15,7 +15,7 @@ const App =  () => {
  return(
 <div className="outer-body">
   <Modal />
-  <header>
+  <header className="nav-bar">
       <WelcomePageContainer />
       {/* <Banner /> */}
   </header>
