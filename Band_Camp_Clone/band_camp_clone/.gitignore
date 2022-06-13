@@ -34,4 +34,3 @@ bundle.js.map
 .env
 
 # Ignor .aws file
-.application.credentials.aws(
