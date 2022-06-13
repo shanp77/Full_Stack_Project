@@ -32,3 +32,6 @@ bundle.js.map
 
 # Ignore .env file for testing Heroku
 .env
+
+# Ignor .aws file
+.application.credentials.aws(
